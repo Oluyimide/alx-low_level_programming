@@ -1,64 +1,24 @@
-/**
- * op_add - adds two numbers
- *
- * @a: one integer
- * @b: second integer
- *
- * Return: sum of integers
- */
-int op_add(int a, int b)
-{
-	return (a + b);
-}
+#include "3-calc.h"
+#include <stdlib.h>
 
 /**
- * op_sub - subtract two numbers
+ * get_op_func - returns pointer to appropriate calculation function
  *
- * @a: one integer
- * @b: second integer
+ * @s: string containing operation symbol
  *
- * Return: a - b
+ * Return: pointer to function if successful, or NULL if fails
  */
-int op_sub(int a, int b)
+int (*get_op_func(char *s))(int, int)
 {
-	return (a - b);
-}
+	op_t key[] = {{"+", op_add}, {"-", op_sub}, {"*", op_mul},
+		      {"/", op_div}, {"%", op_mod} };
+	int i = 0;
 
-/**
- * op_mul - multiplies two numbers
- *
- * @a: one integer
- * @b: second integer
- *
- * Return: a * b
- */
-int op_mul(int a, int b)
-{
-	return (a * b);
-}
-
-/**
- * op_div - divides two numbers
- *
- * @a: one integer
- * @b: second integer
- *
- * Return: a / b
- */
-int op_div(int a, int b)
-{
-	return (a / b);
-}
-
-/**
- * op_mod - modulus two numbers
- *
- * @a: one integer
- * @b: second integer
- *
- * Return: a % b
- */
-int op_mod(int a, int b)
-{
-	return (a % b);
+	while (i < 5)
+	{
+		if (*key[i].op == *s)
+			return (key[i].f);
+		i++;
+	}
+	return (NULL);
 }
