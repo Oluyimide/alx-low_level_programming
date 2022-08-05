@@ -1,24 +1,64 @@
-#include "3-calc.h"
-#include <stdlib.h>
+/**
+ * op_add - adds two numbers
+ *
+ * @a: one integer
+ * @b: second integer
+ *
+ * Return: sum of integers
+ */
+int op_add(int a, int b)
+{
+	return (a + b);
+}
 
 /**
- * get_op_func - returns pointer to appropriate calculation function
+ * op_sub - subtract two numbers
  *
- * @s: string containing operation symbol
+ * @a: one integer
+ * @b: second integer
  *
- * Return: pointer to function if successful, or NULL if fails
+ * Return: a - b
  */
-int (*get_op_func(char *s))(int, int)
+int op_sub(int a, int b)
 {
-	op_t key[] = {{"+", op_add}, {"-", op_sub}, {"*", op_mul},
-		      {"/", op_div}, {"%", op_mod} };
-	int i = 0;
+	return (a - b);
+}
 
-	while (i < 5)
-	{
-		if (*key[i].op == *s)
-			return (key[i].f);
-		i++;
-	}
-	return (NULL);
+/**
+ * op_mul - multiplies two numbers
+ *
+ * @a: one integer
+ * @b: second integer
+ *
+ * Return: a * b
+ */
+int op_mul(int a, int b)
+{
+	return (a * b);
+}
+
+/**
+ * op_div - divides two numbers
+ *
+ * @a: one integer
+ * @b: second integer
+ *
+ * Return: a / b
+ */
+int op_div(int a, int b)
+{
+	return (a / b);
+}
+
+/**
+ * op_mod - modulus two numbers
+ *
+ * @a: one integer
+ * @b: second integer
+ *
+ * Return: a % b
+ */
+int op_mod(int a, int b)
+{
+	return (a % b);
 }
